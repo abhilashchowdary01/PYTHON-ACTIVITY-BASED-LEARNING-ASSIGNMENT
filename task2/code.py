@@ -1,21 +1,20 @@
-# Case Study 51: Bus Passenger Occupancy
+# Case Study 52: Hackathon Team Ranking
 
-capacity = 50
-passengers = 0
+teams = [
+    ("Team A", [80, 90, 85]),
+    ("Team B", [75, 88, 92]),
+    ("Team C", [90, 95, 89])
+]
 
-stops = 4
+for team, scores in teams:
+    total = sum(scores)
+    print(team, "Total Score:", total)
 
-for i in range(1, stops + 1):
-    boarding = int(input("Passengers boarding: "))
-    alighting = int(input("Passengers alighting: "))
+teams.sort(key=lambda x: sum(x[1]), reverse=True)
 
-    passengers = passengers + boarding - alighting
+print("\nTeam Rankings:")
+rank = 1
 
-    if passengers < 0:
-        print("Invalid passenger count")
-        passengers = 0
-    elif passengers > capacity:
-        print("Capacity exceeded!")
-
-    print("Stop:", i)
-    print("Passengers inside:", passengers)
+for team, scores in teams:
+    print(rank, team, "Score:", sum(scores))
+    rank += 1
